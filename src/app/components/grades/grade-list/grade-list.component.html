@@ -1,0 +1,43 @@
+<div class="container">
+  <h2>Grades</h2>
+  
+  <div class="alert alert-danger" *ngIf="error">
+    {{ error }}
+  </div>
+  
+  <div *ngIf="loading" class="text-center">
+    <p>Loading grades...</p>
+  </div>
+  
+  <div *ngIf="!loading && grades.length === 0" class="text-center">
+    <p>No grades found. Add a new grade to get started.</p>
+  </div>
+  
+  <div class="mb-3">
+    <a [routerLink]="['/grades/new']" class="btn btn-primary">Add New Grade</a>
+  </div>
+  
+  <div class="table-responsive" *ngIf="!loading && grades.length > 0">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Student</th>
+          <th>Subject</th>
+          <th>Grade</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let grade of grades">
+          <td>{{ grade.studentName }}</td>
+          <td>{{ grade.subjectName }}</td>
+          <td>{{ grade.grade }}</td>
+          <td>
+            <a [routerLink]="['/grades/edit', grade.id]" class="btn btn-sm btn-info me-2">Edit</a>
+            <button (click)="deleteGrade(grade.id!)" class="btn btn-sm btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="container">
+  <h2>{{ isEditMode ? 'Edit' : 'Add' }} Grade</h2>
+  
+  <div class="alert alert-danger" *ngIf="error">
+    {{ error }}
+  </div>
+  
+  <div *ngIf="loading" class="text-center">
+    <p>Loading...</p>
+  </div>
+  
+  <form [formGroup]="gradeForm" (ngSubmit)="onSubmit()" *ngIf="!loading">
+    <div class="mb-3">
+      <label for="studentId" class="form-label">Student</label>
+      <select 
+        class="form-control" 
+        id="studentId" 
+        formControlName="studentId"
+        [ngClass]="{ 'is-invalid': submitted && f['studentId'].errors }"
+      >
+        <option value="">Select Student</option>
+        <option *ngFor="let student of students" [value]="student.id">
+          {{ student.name }}
+        </option>
+      </select>
+      <div *ngIf="submitted && f['studentId'].errors" class="invalid-feedback">
+        <div *ngIf="f['studentId'].errors['required']">Student is required</div>
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="subjectId" class="form-label">Subject</label>
+      <select 
+        class="form-control" 
+        id="subjectId" 
+        formControlName="subjectId"
+        [ngClass]="{ 'is-invalid': submitted && f['subjectId'].errors }"
+      >
+        <option value="">Select Subject</option>
+        <option *ngFor="let subject of subjects" [value]="subject.id">
+          {{ subject.name }}
+        </option>
+      </select>
+      <div *ngIf="submitted && f['subjectId'].errors" class="invalid-feedback">
+        <div *ngIf="f['subjectId'].errors['required']">Subject is required</div>
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <label for="grade" class="form-label">Grade</label>
+      <input 
+        type="number" 
+        class="form-control" 
+        id="grade" 
+        formControlName="grade" 
+        min="0" 
+        max="100"
+        [ngClass]="{ 'is-invalid': submitted && f['grade'].errors }"
+      >
+      <div *ngIf="submitted && f['grade'].errors" class="invalid-feedback">
+        <div *ngIf="f['grade'].errors['required']">Grade is required</div>
+        <div *ngIf="f['grade'].errors['min']">Grade must be at least 0</div>
+        <div *ngIf="f['grade'].errors['max']">Grade must be at most 100</div>
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <button type="submit" class="btn btn-primary me-2">{{ isEditMode ? 'Update' : 'Add' }}</button>
+      <button type="button" class="btn btn-secondary" (click)="resetForm()">Reset</button>
+      <a [routerLink]="['/grades']" class="btn btn-link">Back to List</a>
+    </div>
+  </form>
+</div>
