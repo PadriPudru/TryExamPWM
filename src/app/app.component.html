@@ -1,26 +1,12 @@
-<nav class="navbar">
-  <div class="container">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="/">
-        <strong>{{ title }}</strong>
-      </a>
-    </div>
-    <div class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item" routerLink="/students" routerLinkActive="active">
-          Students
-        </a>
-        <a class="navbar-item" routerLink="/subjects" routerLinkActive="active">
-          Subjects
-        </a>
-        <a class="navbar-item" routerLink="/grades" routerLinkActive="active">
-          Grades
-        </a>
-      </div>
-    </div>
+<nav class="navbar navbar-expand navbar-dark bg-dark px-3">
+  <a class="navbar-brand text-white" routerLink="/">Angular Exam</a>
+  <div class="navbar-nav">
+    <a class="nav-link" routerLink="/trainers" routerLinkActive="active">Trainers</a>
+    <a class="nav-link" routerLink="/classes" routerLinkActive="active">Classes</a>
+    <a class="nav-link" routerLink="/assignments" routerLinkActive="active">Assignments</a>
   </div>
 </nav>
 
-<div class="container main-content">
+<div class="container mt-4">
   <router-outlet></router-outlet>
 </div>

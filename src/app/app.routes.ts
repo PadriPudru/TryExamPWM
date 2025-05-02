@@ -1,36 +1,31 @@
 import { Routes } from '@angular/router';
 
-// Student Components
-import { StudentListComponent } from './components/students/student-list/student-list.component';
-import { StudentFormComponent } from './components/students/student-form/student-form.component';
+// Trainer Components
+import { TrainerListComponent } from './components/trainers/trainer-list/trainer-list.component';
+import { TrainerFormComponent } from './components/trainers/trainer-form/trainer-form.component';
 
-// Subject Components
-import { SubjectListComponent } from './components/subjects/subject-list/subject-list.component';
-import { SubjectFormComponent } from './components/subjects/subject-form/subject-form.component';
+// Class Components
+import { ClassListComponent } from './components/classes/class-list/class-list.component';
+import { ClassFormComponent } from './components/classes/class-form/class-form.component';
 
-// Grade Components
-import { GradeListComponent } from './components/grades/grade-list/grade-list.component';
-import { GradeFormComponent } from './components/grades/grade-form/grade-form.component';
+// Assignment Components
+import { AssignmentListComponent } from './components/assignments/assignment-list/assignment-list.component';
+import { AssignmentFormComponent } from './components/assignments/assignment-form/assignment-form.component';
 
 export const routes: Routes = [
-  // Default route
-  { path: '', redirectTo: '/students', pathMatch: 'full' },
-  
-  // Student routes
-  { path: 'students', component: StudentListComponent },
-  { path: 'students/new', component: StudentFormComponent },
-  { path: 'students/edit/:id', component: StudentFormComponent },
-  
-  // Subject routes
-  { path: 'subjects', component: SubjectListComponent },
-  { path: 'subjects/new', component: SubjectFormComponent },
-  { path: 'subjects/edit/:id', component: SubjectFormComponent },
-  
-  // Grade routes
-  { path: 'grades', component: GradeListComponent },
-  { path: 'grades/new', component: GradeFormComponent },
-  { path: 'grades/edit/:id', component: GradeFormComponent },
-  
-  // Wildcard route for 404
-  { path: '**', redirectTo: '/students' }
+  { path: '', redirectTo: '/trainers', pathMatch: 'full' },
+
+  { path: 'trainers', component: TrainerListComponent },
+  { path: 'trainers/new', component: TrainerFormComponent },
+  { path: 'trainers/edit/:id', component: TrainerFormComponent },
+
+  { path: 'classes', component: ClassListComponent },
+  { path: 'classes/new', component: ClassFormComponent },
+  { path: 'classes/edit/:id', component: ClassFormComponent },
+
+  { path: 'assignments', component: AssignmentListComponent },
+  { path: 'assignments/new', component: AssignmentFormComponent },
+  { path: 'assignments/edit/:id', component: AssignmentFormComponent },
+
+  { path: '**', redirectTo: '/trainers' }
 ];

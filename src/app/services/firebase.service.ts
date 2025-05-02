@@ -1,18 +1,42 @@
 import { Injectable } from '@angular/core';
-import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
-import { environment } from '../../environments/environment';
+import {
+  Firestore,
+  collection,
+  collectionData,
+  doc,
+  docData,
+  addDoc,
+  updateDoc,
+  deleteDoc
+} from '@angular/fire/firestore';
+import { Observable, from } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class FirebaseService {
-  private app = initializeApp(environment.firebase);
-  private db = getFirestore(this.app);
+  constructor(private firestore: Firestore) {}
 
-  constructor() { }
+  getCollection<T>(path: string): Observable<T[]> {
+    const ref = collection(this.firestore, path);
+    return collectionData(ref, { idField: 'id' }) as Observable<T[]>;
+  }
 
-  getFirestore() {
-    return this.db;
+  getDocument<T>(path: string, id: string): Observable<T> {
+    const ref = doc(this.firestore, path, id);
+    return docData(ref, { idField: 'id' }) as Observable<T>;
+  }
+
+  addDocument<T extends { [key: string]: any }>(path: string, data: T): Observable<any> {
+    const ref = collection(this.firestore, path);
+    return from(addDoc(ref, data));
+  }
+
+  updateDocument<T extends { [key: string]: any }>(path: string, id: string, data: T): Observable<void> {
+    const ref = doc(this.firestore, path, id);
+    return from(updateDoc(ref, { ...data }));
+  }
+
+  deleteDocument(path: string, id: string): Observable<void> {
+    const ref = doc(this.firestore, path, id);
+    return from(deleteDoc(ref));
   }
 }

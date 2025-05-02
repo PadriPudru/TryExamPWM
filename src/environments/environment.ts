@@ -1,11 +1,12 @@
 export const environment = {
   production: false,
-  firebase:  {apiKey: "AIzaSyBHjgvzlLeGla42b8q1MYVFKi5tfB_Nzo8",
-  authDomain: "prueba-examen-ee34b.firebaseapp.com",
-  projectId: "prueba-examen-ee34b",
-  storageBucket: "prueba-examen-ee34b.firebasestorage.app",
-  messagingSenderId: "523307951424",
-  appId: "1:523307951424:web:ad8a658f74367fb0b886a5",
-  measurementId: "G-VH5Y6C0WMN"
+  firebase:  {
+    apiKey: "AIzaSyA5DmHrJTMoTLki1hPqPD_r36nrO38_9RI",
+    authDomain: "examtry-19510.firebaseapp.com",
+    projectId: "examtry-19510",
+    storageBucket: "examtry-19510.firebasestorage.app",
+    messagingSenderId: "422729468816",
+    appId: "1:422729468816:web:22bb90f19e1aa0cdf4c115",
+    measurementId: "G-CCPYL7Y2W6"
   }
 }
