@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Trainer List</h2>
+
+  <a routerLink="/trainers/new" class="btn btn-primary mb-3">Add Trainer</a>
+
+  <table class="table table-bordered" *ngIf="trainers.length">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Specialty</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let trainer of trainers">
+      <td>{{ trainer.name }}</td>
+      <td>{{ trainer.specialty }}</td>
+      <td>
+        <a [routerLink]="['/trainers/edit', trainer.id]" class="btn btn-sm btn-info me-2">Edit</a>
+        <button class="btn btn-sm btn-danger" (click)="deleteTrainer(trainer.id!)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

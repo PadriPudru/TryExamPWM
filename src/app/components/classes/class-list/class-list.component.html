@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Classes</h2>
+
+  <a routerLink="/classes/new" class="btn btn-primary mb-3">Add Class</a>
+
+  <table class="table table-bordered" *ngIf="classes.length">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Difficulty</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let c of classes">
+      <td>{{ c.name }}</td>
+      <td>{{ c.difficulty }}</td>
+      <td>
+        <a [routerLink]="['/classes/edit', c.id]" class="btn btn-sm btn-info me-2">Edit</a>
+        <button (click)="deleteClass(c.id!)" class="btn btn-sm btn-danger">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

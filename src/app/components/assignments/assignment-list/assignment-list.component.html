@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>Assignments</h2>
+
+  <a routerLink="/assignments/new" class="btn btn-primary mb-3">Add Assignment</a>
+
+  <table class="table table-bordered" *ngIf="assignments.length">
+    <thead>
+    <tr>
+      <th>Trainer</th>
+      <th>Class</th>
+      <th>Day</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let a of assignments">
+      <td>{{ trainersMap[a.trainerId] }}</td>
+      <td>{{ classesMap[a.classId] }}</td>
+      <td>{{ a.day }}</td>
+      <td>
+        <a [routerLink]="['/assignments/edit', a.id]" class="btn btn-sm btn-info me-2">Edit</a>
+        <button (click)="deleteAssignment(a.id!)" class="btn btn-sm btn-danger">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

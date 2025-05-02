@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>{{ isEditMode ? 'Edit' : 'Add' }} Assignment</h2>
+
+  <form [formGroup]="assignmentForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="trainerId">Trainer</label>
+      <select id="trainerId" formControlName="trainerId" class="form-control">
+        <option value="">-- Select Trainer --</option>
+        <option *ngFor="let trainer of trainers" [value]="trainer.id">
+          {{ trainer.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="classId">Class</label>
+      <select id="classId" formControlName="classId" class="form-control">
+        <option value="">-- Select Class --</option>
+        <option *ngFor="let c of classes" [value]="c.id">
+          {{ c.name }}
+        </option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="day">Day</label>
+      <input id="day" formControlName="day" class="form-control" type="text">
+    </div>
+
+    <button type="submit" class="btn btn-primary me-2">{{ isEditMode ? 'Update' : 'Add' }}</button>
+    <button type="button" class="btn btn-secondary" (click)="resetForm()">Reset</button>
+  </form>
+</div>

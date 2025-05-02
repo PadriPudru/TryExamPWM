@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>{{ isEditMode ? 'Edit' : 'Add' }} Trainer</h2>
+
+  <form [formGroup]="trainerForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="name">Name</label>
+      <input id="name" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['name'].errors }">
+      <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">Name is required</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="specialty">Specialty</label>
+      <input id="specialty" formControlName="specialty" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['specialty'].errors }">
+      <div *ngIf="submitted && f['specialty'].errors" class="invalid-feedback">Specialty is required</div>
+    </div>
+
+    <button class="btn btn-primary me-2" type="submit">{{ isEditMode ? 'Update' : 'Add' }}</button>
+    <button class="btn btn-secondary" type="button" (click)="resetForm()">Reset</button>
+  </form>
+</div>
